@@ -37,6 +37,7 @@ router.get('/:id', (req, res) => {
 router.post('/', fileUploader.single('fileBook'), (req, res) => {
     const { books } = store
     const { title, description, authors, favorite, fileCover, fileName } = req.body
+    console.log('req.file >>> ', req.file)
     const fileBook = req.file.path;
 
     const newBook = new Book(title, description, authors, favorite, fileCover, fileName, fileBook)
