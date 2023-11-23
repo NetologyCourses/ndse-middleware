@@ -3,7 +3,7 @@ const router = express.Router()
 const { v4: uuid } = require('uuid')
 
 const Book = require('../models/Book')
-const fileUploader = require('../middleware/flieUploader')
+const fileUploader = require('../middleware/fileUploader')
 const store = require('../store/store')
 
 /**
@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
     const { id } = req.params
     const bookIndex = books.findIndex(book => book.id === id)
 
-    if( bookIndex !== -1) {
+    if (bookIndex !== -1) {
         res.json(books[bookIndex])
     }
     else {
@@ -84,7 +84,7 @@ router.delete('/:id', (req, res) => {
     const { id } = req.params
     const bookIndex = books.findIndex(book => book.id === id)
 
-    if(bookIndex !== -1) {
+    if (bookIndex !== -1) {
         books.splice(bookIndex, 1)
         res.json('ok')
     }
