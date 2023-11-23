@@ -1,10 +1,13 @@
 const express = require('express')
 const router = express.Router()
 
-const store = require('../store/store')
+const Store = require('../store/store')
+const { user } = Store
+console.log('Store >>> ', Store)
 
 router.post('/login', (req, res) => {
-    const { user } = store
+    const { body } = req
+    console.log('req body >>> ', body)
     res.status(201)
     res.json(user)
 })
